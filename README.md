@@ -1,6 +1,7 @@
 # Neural Machine Translation with a Transformer 
 
 ## Step 1
+
 This was step 1
 
 ## Step 2
