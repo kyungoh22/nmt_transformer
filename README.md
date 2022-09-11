@@ -1,11 +1,14 @@
 # Neural Machine Translation with a Transformer 
 
-## Step 1
+## Overview
 
-This was step 1
+## Architecture
 
-## Step 2
-This was step 2 
 
-## Step 3
-This was step 3
+## Implementation
+
+### Data Wrangling
+
+### Training
+
+### Translating
