@@ -7,19 +7,18 @@
 - Click "plot" to see a heatmap of the attention scores.
 
 ### Data
-- The model was trained on the following two datasets
+- Data set 1: transcriptions from the proceedings of the European Parliament. Link [here](https://www.statmt.org/europarl/).
+- Data set 2: bi-lingual sentence pairs written by volunteers of the Tatoeba Project. Link [here](http://www.manythings.org/bilingual/). 
+- The combined data set includes around 2.1 million sentences. I selected only the sentences with fewer than 30 words per sentence, which amounted to around 1.5 million sentences.
 
-#### Data set 1
-- Transcriptions from the proceedings of the European Parliament during the years 1996–2011
-- You can find the dataset [here](https://www.statmt.org/europarl/)
 
-#### Data set 2
-- Sentence pairs written by volunteers of the Tatoeba Project.
-- You can find the dataset [here](http://www.manythings.org/bilingual/)
 
-## Attention mechanism
+## 1) Some remarks on key ideas
 
-### Overview of the Self-Attention mechanism
+- Our Transformer model is based on the architecture laid out by Vaswani et al in the paper ['Attention Is All You Need'](https://arxiv.org/abs/1706.03762). 
+- Below, I offer a high-level overview of some key features and ideas. 
+
+### 1.1) Overview of the Self-Attention mechanism
 
 - We have a sequence of words, with each word represented by an embedding vector
 - The goal is to create a new vector representation for each word, based on the other words in the sentence 
@@ -36,17 +35,13 @@ $$ A = \frac{1}{\sqrt{d_k}}softmax(Q * K^T)V $$
 
 - where A, Q, K and V store the a, q, k, and v vectors as rows. 
 
-### Intuition behind the Self-Attention mechanism
-- Until now, we have been using fixed pre-trained word embeddings
-- This enabled our model to capture similarities and differences between words
-- For example, the embeddings for the words "banana" and "apple" would have a relatively high cosine similarity score, since both "banana" and "apple" are fruit. 
-- However, assigning a fixed embedding vector to each word ignores the fact that every word can have a different meaning depending on its context
-- The same word can take on different connotations depending on the sentence it is used in
-- The Self-Attention mechanism offers a way to capture the context-dependent meanings of words
-- The sentence "pays attention to itself" – and creates a new vector representation for each word, depending on the words around it. 
+### 1.2) Intuition behind the Self-Attention mechanism
+- In the earlier NMT models in Part 1 and Part 2, we used fixed pre-trained embeddings to represent every word
+- This enabled our model to capture similarities and differences between words (for example when measured using the cosine similarity). 
+- However, representing each word with a fixed embedding vector ignores the fact that any word can take on different meanings depending on the words around it. 
+- The Self-Attention mechanism offers a way to capture the context-dependent meanings of words. The sentence "pays attention to itself", creating a new vector representation for each word as is appropriate **for that particular sentence**.
 
-
-### Attention mechanism in the Transformer model
+### 1.3) Attention mechanism in the Transformer model
 
 - We incorporate the Attention mechanism in the Transformer in three places: 
 
@@ -54,7 +49,7 @@ $$ A = \frac{1}{\sqrt{d_k}}softmax(Q * K^T)V $$
 - 2) Self-attention in the Decoder, where the target sequence pays attention to itself. The embeddings of the words in the target sequence are used as the "q", "k", and "v" vectors.
 - 3) Encoder-Decoder-attention in the Decoder, where the target sequence pays attention to the source sequence. The outputs of the Decoder self-attention layer is used as the "q" vectors, and the outputs of the Encoder are used as the "k" and "v" vectors. 
 
-### Positional Encodings
+### 1.4) Positional Encodings
 - With earlier RNN networks, we fed the inputs into the network one word at a time in the correct order. However, when we train the Transformer model, we feed the data all at once. As such, we need an additional step to encode the order in which the words appear in each sentence. We encode the positions of the inputs using the following formulas: 
 
 $$
@@ -70,7 +65,7 @@ PE_{(pos, 2i+1)}= cos\left(\frac{pos}{{10000}^{\frac{2i}{d}}}\right)
 * $k$ refers to each of the different dimensions in the positional encodings, with $i$ equal to $k$ $//$ $2$.
   
 
-## Model architecture
+## 2) Model architecture
 
 ### Encoder
 - The Encoder embeds the source sentence, adds positional encodings, and passes the encoded embeddings into a stack of Encoder layers.
@@ -85,8 +80,22 @@ PE_{(pos, 2i+1)}= cos\left(\frac{pos}{{10000}^{\frac{2i}{d}}}\right)
 - The Decoder layer consists of two multi-head attention layers. First, it passes the input through a multi-head attention layer for Self-Attention. The output is used as the Query matrix for the second multi-head attention layer, while the output from the Encoder is used as the Key and Value matrices. The output of the second multi-head attention layer is passed through a feed-forward network. Once again, we include residual connections and layer normalization to speed up training. 
 
 
-## Tokenization
+## 3) Tokenization
 - Byte-pair encoding (BPE) was used to tokenize the sentences. This offers a number of advantages over the word-based tokenization I used earlier in Part 1 and 2. When you tokenize each word, your Embedding matrix grows larger with every new word you add into the vocabulary. This in turn means there are more and more parameters in your Embedding layer that need to be optimised, leading to longer training times. Byte-pair encoding sets a limit (in our case 30,000) on the number of tokens in your vocabulary. Moreover, it enables your model to also translate new words that aren't in the training set. 
+
+## 4) Navigating the directory
+
+### 4.1) Data wrangling
+- Please see the notebook **data_wrangling.ipynb** and the custom module **tokenizer_helpers.py**
+
+### 4.2) Training
+- Please see the notebook **train_v3.ipynb** and the custom modules **tokenizer_helpers.py**, **model_components.py** and **training_helper_functions.py**
+
+### 4.3) Translating
+- Please see the notebook **translate_v3.ipynb** and the custom modules **tokenizer_helpers.py**, **model_components.py** and **translate_helper_functions.py**
+
+### 4.4) Flask app
+- 
 
 
 
