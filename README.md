@@ -11,7 +11,7 @@
 
 $$ a_i = \alpha_1 * v_1 + \alpha_2 * v_2 + ... + \alpha_N * v_N $$
 
-- Each coefficient $\alpha_j$ is computed by projecting $q_i$ onto $k_j$ : $\alpha_j$ = $q_i$ $\cdot $k_j$
+- Each coefficient $\alpha_j$ is computed by projecting $q_i$ onto $k_j$ : $\alpha_j$ = $q_i$ $\cdot$ $k_j$
 - The coefficients are normalised using the soft-max function 
 - We vectorise these operations in the Transformer architecture for higher performance: 
 
