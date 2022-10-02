@@ -1,6 +1,6 @@
 # Neural Machine Translation with a Transformer 
 
-## Overview
+## Attention mechanism
 
 ### Overview of the Self-Attention mechanism
 
