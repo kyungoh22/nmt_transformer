@@ -6,7 +6,7 @@
 
 - We have a sequence of words, with each word represented by an embedding vector
 - The goal is to create a new vector representation for each word, based on the other words in the sentence 
-- For each word **i** in the sentence, create a query vector ($/q_i$), key vector (**k_i**), and value vector (**v_i**)
+- For each word **i** in the sentence, create a query vector ($\q_i$), key vector (**k_i**), and value vector (**v_i**)
 - Then we create a new vector representation **a_i** for each word, where **a_i** is a linear combination of all the value vectors: 
 
 $$ a_i = \alpha_1 * v_1 + \alpha_2 * v_2 + ... + \alpha_N * v_N $$
