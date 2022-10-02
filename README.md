@@ -9,7 +9,7 @@
 - For each word **i** in the sentence, create a query vector (**q_i**), key vector (**k_i**), and value vector (**v_i**)
 - Then we create a new vector representation **a_i** for each word, where **a_i** is a linear combination of all the value vectors: 
 
-a_i = $$\alpha_1 * v_1 + $$\ * v_2 + ... + $$\ * v_N
+$$a_i = \alpha_1 * v_1 + \alpha_2 * v_2 + ... + \alpha_N * v_N$$
 
 - Each coefficient **alpha_j** is computed by projecting q_i onto k_j
 - The coefficients are normalised using the soft-max function 
