@@ -19,6 +19,24 @@ $$ A = \frac{1}{\sqrt{d_k}}softmax(Q * K^T)V $$
 
 where A, Q, K and V store the a, q, k, and v vectors as rows. 
 
+### Intuition behind the Self-Attention mechanism
+- Until now, we have been using fixed pre-trained word embeddings
+- This enabled our model to capture similarities and differences between words
+- For example, the embeddings for the words "banana" and "apple" would have a relatively high cosine similarity score, since both "banana" and "apple" are fruit. 
+- However, assigning a fixed embedding vector to each word ignores the fact that every word can have a different meaning depending on its context
+- The same word can take on different connotations depending on the sentence it is used in
+- The Self-Attention mechanism offers a way to capture the context-dependent meanings of words
+- The sentence "pays attention to itself" – and creates a new vector representation for each word, depending on the words around it. 
+
+
+### Attention mechanism in the Transformer model
+
+- We incorporate the Attention mechanism in the Transformer in three places: 
+
+- 1) Self-attention in the Encoder, where the source sequence pays attention to itself. The embeddings of the words in the source sequence are used as the "q", "k", and "v" vectors. 
+- 2) Self-attention in the Decoder, where the target sequence pays attention to itself. The embeddings of the words in the target sequence are used as the "q", "k", and "v" vectors.
+- 3) Encoder-Decoder-attention in the Decoder, where the target sequence pays attention to the source sequence. The outputs of the Decoder self-attention layer is used as the "q" vectors, and the outputs of the Encoder are used as the "k" and "v" vectors. 
+
 
 
 ## Architecture
