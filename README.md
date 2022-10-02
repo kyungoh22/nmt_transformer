@@ -33,7 +33,7 @@ $$ a_i = \alpha_1 * v_1 + \alpha_2 * v_2 + ... + \alpha_N * v_N $$
 
 $$ A = \frac{1}{\sqrt{d_k}}softmax(Q * K^T)V $$
 
-- where A, Q, K and V store the a, q, k, and v vectors as rows, and $d_k is the length of the k vector. 
+- where A, Q, K and V store the a, q, k, and v vectors as rows, and $d_k$ is the length of the k vector. 
 
 ### 1.2) Intuition behind the Self-Attention mechanism
 - In the earlier NMT models in Part 1 and Part 2, we used fixed pre-trained embeddings to represent every word
