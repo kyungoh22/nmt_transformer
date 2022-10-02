@@ -17,7 +17,7 @@ $$ a_i = \alpha_1 * v_1 + \alpha_2 * v_2 + ... + \alpha_N * v_N $$
 
 $$ A = \frac{1}{\sqrt{d_k}}softmax(Q * K^T)V $$
 
-where A, Q, K and V store the a, q, k, and v vectors as rows. 
+- where A, Q, K and V store the a, q, k, and v vectors as rows. 
 
 ### Intuition behind the Self-Attention mechanism
 - Until now, we have been using fixed pre-trained word embeddings
