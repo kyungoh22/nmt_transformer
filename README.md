@@ -15,7 +15,7 @@ $$ a_i = \alpha_1 * v_1 + \alpha_2 * v_2 + ... + \alpha_N * v_N $$
 - The coefficients are normalised using the soft-max function 
 - We vectorise these operations in the Transformer architecture for higher performance: 
 
-$$ A = \frac{1}{(\sqrt(d_k))}softmax(Q * K^T)V $$
+$$ A = \frac{1}{\sqrt{d_k}}softmax(Q * K^T)V $$
 
 where A, Q, K and V store the a, q, k, and v vectors as rows. 
 
