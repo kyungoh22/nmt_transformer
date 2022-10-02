@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+    <title> DE-EN translation
+    </title>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="shortcut icon" href="/static/images/lstm.ico">
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</header>
+
+<body>
+    <div class="container">
+        {% block content %}
+        <p><b>Original German sentence:</b></p>
+        {{original_sentence|safe}}
+        <p><b>Model's translation:</b></p>
+        {{pred_sentence|safe}}
+        <p><b>True translation:</b></p>
+        {{true_translation|safe}}
+        {% endblock content %}
+    </div>
+
+    <div id = 'plot_button'>
+
+        <!-- button onclick = attribute that allows you to run JS code; 
+            onclick = event listener; display_image() = function that will run when event occurs  -->
+        <button onclick = 'display_image()'> Show attention scores </button>
+    </div>
+
+    <script>
+        console.log(document) 
+        function display_image(){
+            console.log('Clicked worked')
+            // document = java's built-in API that takes html page and transforms into DOM, which is an object
+            // that you can interact with. Has methods we can work with, e.g. createElement, appendChild etc.
+            
+            // 'img' = html tag
+            const image = document.createElement('img')
+            // define file path of image -- in my case, the relative file path
+            //image.setAttribute('src', 'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png')
+            
+            image.setAttribute('src', './static/attention_plots.png')
+            //image.setAttribute('width', '150px') // height is 'auto'; taken from picture's original ratio
+            
+
+
+            // get any element from HTML with plot_button id
+            const my_image_container = document.getElementById('plot_button')
+            my_image_container.appendChild(image)
+        }
+    </script>
+
+</body>
+
+</html>
