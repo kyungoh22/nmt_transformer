@@ -1,8 +1,9 @@
-# Neural Machine Translation with a Transformer 
-
 - This is Part 3 of my three-part Neural Machine Translation project. I build a Transformer model from scratch using Tensorflow.
 - For Part 1, based on LSTMs, please see [here](https://github.com/kyungoh22/nmt_lstm)
 - For Part 2, based on Attention, please see [here](https://github.com/kyungoh22/nmt_attention)
+
+# Neural Machine Translation with a Transformer 
+
 
 ### Deployed model
 - I deployed my trained model as a simple web app using Flask and heroku. 
