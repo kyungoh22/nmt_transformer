@@ -1,11 +1,8 @@
 # Neural Machine Translation with a Transformer 
 
 - This is Part 3 of my three-part Neural Machine Translation project. 
-
-The overview of the project is as follows:
-- Part 1: LSTMs 
-- Part 2: Attention
-- Part 3: Transformer
+- For Part 1, based on LSTMs, please see [here](https://github.com/kyungoh22/nmt_lstm)
+- For Part 2, based on Attention, please see [here](https://github.com/kyungoh22/nmt_attention)
 
 ### Deployed model
 - I deployed my trained model as a simple web app using Flask and heroku. 
