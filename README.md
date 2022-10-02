@@ -37,6 +37,36 @@ where A, Q, K and V store the a, q, k, and v vectors as rows.
 - 2) Self-attention in the Decoder, where the target sequence pays attention to itself. The embeddings of the words in the target sequence are used as the "q", "k", and "v" vectors.
 - 3) Encoder-Decoder-attention in the Decoder, where the target sequence pays attention to the source sequence. The outputs of the Decoder self-attention layer is used as the "q" vectors, and the outputs of the Encoder are used as the "k" and "v" vectors. 
 
+### Positional Encodings
+- With earlier RNN networks, we fed the inputs into the network one word at a time in the correct order. However, when we train the Transformer model, we feed the data all at once. As such, we need an additional step to encode the order in which the words appear in each sentence. We encode the positions of the inputs using the following formulas: 
+
+$$
+PE_{(pos, 2i)}= sin\left(\frac{pos}{{10000}^{\frac{2i}{d}}}\right)
+\tag{1}$$
+<br>
+$$
+PE_{(pos, 2i+1)}= cos\left(\frac{pos}{{10000}^{\frac{2i}{d}}}\right)
+\tag{2}$$
+
+* $d$ is the dimension of the word embedding and positional encoding
+* $pos$ is the position of the word.
+* $k$ refers to each of the different dimensions in the positional encodings, with $i$ equal to $k$ $//$ $2$.
+  
+
+## Model architecture
+
+### Encoder
+- The Encoder embeds the source sentence, adds positional encodings, and passes the encoded embeddings into a stack of Encoder layers.
+
+### Encoder Layer
+- The Encoder layer passes the input through a multi-head attention layer, whose outputs are then passed into a feed-forward network. We also include residual connections and layer normalization to speed up training. 
+
+### Decoder
+- The Decoder embeds the target sentence, adds positional encodings, and passes the encoded embeddings into a stack of Decoder layers. 
+
+### Decoder Layer
+- The Decoder layer consists of two multi-head attention layers. First, it passes the input through a multi-head attention layer for Self-Attention. The output is used as the Query matrix for the second multi-head attention layer, while the output from the Encoder is used as the Key and Value matrices. The output of the second multi-head attention layer is passed through a feed-forward network. Once again, we include residual connections and layer normalization to speed up training. 
+
 
 
 ## Architecture
