@@ -1,5 +1,22 @@
 # Neural Machine Translation with a Transformer 
 
+### Deployed model
+- I deployed my trained model as a simple web app using Flask and heroku. 
+- Please follow this [link](https://transformer-translator-3.herokuapp.com/) to try out the translation model.
+- The model translates from German into English. You can either enter an original sentence in German, or enter "random" to translate a random sentence from the training data.
+- Click "plot" to see a heatmap of the attention scores.
+
+### Data
+- The model was trained on the following two datasets
+
+#### Data set 1
+- Transcriptions from the proceedings of the European Parliament during the years 1996–2011
+- You can find the dataset [here](https://www.statmt.org/europarl/)
+
+#### Data set 2
+- Sentence pairs written by volunteers of the Tatoeba Project.
+- You can find the dataset [here](http://www.manythings.org/bilingual/)
+
 ## Attention mechanism
 
 ### Overview of the Self-Attention mechanism
@@ -66,6 +83,13 @@ PE_{(pos, 2i+1)}= cos\left(\frac{pos}{{10000}^{\frac{2i}{d}}}\right)
 
 ### Decoder Layer
 - The Decoder layer consists of two multi-head attention layers. First, it passes the input through a multi-head attention layer for Self-Attention. The output is used as the Query matrix for the second multi-head attention layer, while the output from the Encoder is used as the Key and Value matrices. The output of the second multi-head attention layer is passed through a feed-forward network. Once again, we include residual connections and layer normalization to speed up training. 
+
+
+## Tokenization
+- Byte-pair encoding (BPE) was used to tokenize the sentences. This offers a number of advantages over the word-based tokenization I used earlier in Part 1 and 2. When you tokenize each word, your Embedding matrix grows larger with every new word you add into the vocabulary. This in turn means there are more and more parameters in your Embedding layer that need to be optimised, leading to longer training times. Byte-pair encoding sets a limit (in our case 30,000) on the number of tokens in your vocabulary. Moreover, it enables your model to also translate new words that aren't in the training set. 
+
+
+
 
 
 
