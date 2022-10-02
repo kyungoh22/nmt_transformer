@@ -43,7 +43,8 @@ where A, Q, K and V store the a, q, k, and v vectors as rows.
 $$
 PE_{(pos, 2i)}= sin\left(\frac{pos}{{10000}^{\frac{2i}{d}}}\right)
 \tag{1}$$
-<br>
+
+
 $$
 PE_{(pos, 2i+1)}= cos\left(\frac{pos}{{10000}^{\frac{2i}{d}}}\right)
 \tag{2}$$
