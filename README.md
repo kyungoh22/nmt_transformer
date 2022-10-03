@@ -20,7 +20,7 @@
 
 ## 1) Some remarks on key ideas
 
-- Our Transformer model is based on the architecture laid out by Vaswani et al in the paper ['Attention Is All You Need'](https://arxiv.org/abs/1706.03762). 
+- My Transformer model is based on the architecture laid out by Vaswani et al in the paper ['Attention Is All You Need'](https://arxiv.org/abs/1706.03762). 
 - Below, I offer a high-level overview of some key features and ideas. 
 
 ### 1.1) Overview of the Self-Attention mechanism
